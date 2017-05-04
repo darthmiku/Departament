@@ -1,0 +1,4 @@
+Django==1.11
+Pillow==2.3.0
+django-geoposition==0.3.0
+django-model-utils==3.0.0
