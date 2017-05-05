@@ -1,0 +1,41 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+    <html lang=ca>
+        <head>
+            <meta charset="utf-8">
+            <meta http-equiv=X-UA-Compatible content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="description" content="Base">
+            <meta name="author" content="darthmiku">
+            <link rel="shortcut icon" href="../img/favicon.png">
+        
+            <title>{% block title %}Gotham Departament Police {% endblock %}</title>
+        
+            <!-- Bootstrap CSS -->    
+            <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+            <!-- bootstrap theme -->
+            <link href="{% static "css/theme.css" %}" rel="stylesheet">
+            <!--external css-->
+            <!-- font icon -->
+            <link href="{% static "css/elegant-icons-style.css" %}" rel="stylesheet" />
+            <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet" />    
+            <!-- easy pie chart-->
+            <link href="{%static "assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" %}"rel="stylesheet" type="text/css" media="screen"/>
+            <!-- owl carousel -->
+            <link rel="stylesheet" href="{% static "css/owl.carousel.css" %}" type="text/css">
+        	<link href="{%static "css/jquery-jvectormap-1.2.2.css" %}"rel="stylesheet">
+            <!-- Custom styles -->
+        	<link href="{% static "css/widgets.css" %}" rel="stylesheet">
+            <link href="{% static "css/style.css" %}" rel="stylesheet">
+            <link href="{% static "css/style-responsive.css" %}"rel="stylesheet" />
+        	<link href="{% static "css/xcharts.min.css" %}" rel=" stylesheet">	
+        	<link href="{% static "css/jquery-ui-1.10.4.min.css" %}" rel="stylesheet">
+            
+            {% block extra-head %} {% endblock %}
+          </head>
+    <body>
+        <div> {% block content %} {% endblock %}
+        {% block extra-body %} {% endblock %}
+    </div>
+    </body>
+</html>

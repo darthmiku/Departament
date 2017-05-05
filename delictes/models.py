@@ -4,16 +4,15 @@ from django.db import models
 
 #DISTRICTE
 class Districte(models.Model):
-    nom=models.CharField(max_length=200)
-    
-    def __str__(self):
-        return self.nom 
+    nom=models.CharField(max_length=200,default='')
+
 
 #DENUNCIA
 class Denuncia(models.Model):
     data=models.DateTimeField()
     districte=models.ForeignKey(Districte,on_delete=models.CASCADE)
     supervillano=models.ForeignKey('supers.Supervillano',on_delete=models.CASCADE)
+    observacions=models.CharField(max_length=200,default="", blank=True)
 
 #DELICTE
 class Delicte(models.Model):
