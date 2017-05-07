@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from django.db import models
+from django.contrib.auth.models import User
 from geoposition.fields import GeopositionField
 from geoposition import Geoposition
 
@@ -20,7 +22,7 @@ class Super(models.Model):
 #subclasse SUPERVILLANO
 class Supervillano(Super):
     villano_id=models.IntegerField(primary_key=True)
-    aparensa=models.CharField(max_length=200)
+    aparensa=models.CharField(max_length=200,verbose_name='Aparença')
     graumaldat=models.CharField(verbose_name="Grau de Maldat",max_length=50)
     
 
@@ -28,5 +30,6 @@ class Supervillano(Super):
 class Superheroi(Super):
     heroi_id=models.IntegerField(primary_key=True)
     disponibilitat=models.DateTimeField()
+    usuari = models.OneToOneField(User,default='')
     
 

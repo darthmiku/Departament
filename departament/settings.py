@@ -109,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ca-es'
 
 TIME_ZONE = 'UTC'
 
@@ -124,5 +124,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [ os.path.join(BASE_DIR, "static"),
+                    
+                    ]
 
+
+
+#API KEY DEL GOOGLE_MAPS
 GEOPOSITION_GOOGLE_MAPS_API_KEY = 'AIzaSyBc9I7-cZOh3dYdxmOvRJFFbZ3CHdApbHg'

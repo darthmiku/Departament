@@ -20,9 +20,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    url(r'^', include('delictes.urls')),
-    url(r'^Perfil/', include('usuaris.urls')),
-    url(r'^admin/', admin.site.urls),
+    url(r'^', include('usuaris.urls')),
+    url(r'^delicte/', include('delictes.urls')),
+    #url(r'^admin/', admin.site.urls),
 ]
 
 #Si vull afegir imatges

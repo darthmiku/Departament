@@ -9,7 +9,7 @@ class Districte(models.Model):
 
 #DENUNCIA
 class Denuncia(models.Model):
-    data=models.DateTimeField()
+    data=models.DateTimeField(auto_now_add=True)
     districte=models.ForeignKey(Districte,on_delete=models.CASCADE)
     supervillano=models.ForeignKey('supers.Supervillano',on_delete=models.CASCADE)
     observacions=models.CharField(max_length=200,default="", blank=True)

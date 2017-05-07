@@ -4,7 +4,7 @@ from . import views
 app_name='delictes'
 
 urlpatterns = [
-#   url(r'^$', views.index, name='index'),
+     url(r'^denuncia/$', views.crear_denuncia, name='crear_denuncia')
 #    url(r'^cercador/$', views.cercador, name="cercador"),
 #    url(r'^ultims/$', views.ultims, name='ultims'),
 #    url(r'^recomanats/$', views.recomanats, name='recomanats'),
