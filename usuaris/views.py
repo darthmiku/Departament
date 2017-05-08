@@ -15,7 +15,8 @@ from django.contrib.auth import ( login as authLogin,
 from django.contrib import messages
 
 
-
+def dashboard(request):
+     return render(request, 'dashboard.html')
 
 
 

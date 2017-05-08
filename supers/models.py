@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from usuaris.models import Perfil
 from django.contrib.auth.models import User
 from geoposition.fields import GeopositionField
 from geoposition import Geoposition
@@ -30,6 +31,6 @@ class Supervillano(Super):
 class Superheroi(Super):
     heroi_id=models.IntegerField(primary_key=True)
     disponibilitat=models.DateTimeField()
-    usuari = models.OneToOneField(User,default='')
+    perfil = models.OneToOneField(Perfil,default="")
     
 

@@ -34,33 +34,7 @@ def crear_denuncia(request):
     for f in form.fields:
         form.fields[f].widget.attrs['class'] = 'formulari'
  
-    return render (request, 'delictes/dashboard.html', {'form': form} )    
+        form.fields['observacions'].widget.attrs['class']="form-control"
+    return render (request, 'delictes/crear_denuncia.html', {'form': form} )    
 
    
-# #EDITAR DISC EXISTENT
-# def editar_disc(request, oferta_disc_id):
-#     EditForm = modelform_factory(Oferta_disc, fields=('titol', 'grup','anny','genere','estat','descripcio','preu', 'image'))
-#     unEdit = Oferta_disc()
-#       #comprovem que existeix l'oferta_disc
-#     if oferta_disc_id:
-#         unEdit = get_object_or_404(Oferta_disc, pk=oferta_disc_id)
-        
-#     if request.method == 'POST':
-#         form = EditForm (request.POST,request.FILES, instance= unEdit)
-#         if form.is_valid():
-#           form.save()
-#           messages.info(request,"disc canviat correctament")
-#           return redirect("usuaris:login.html")    
-#     else:
-#         form= EditForm (instance = unEdit)
-    
-#     for f in form.fields:
-#         form.fields[f].widget.attrs['class'] = 'formulari'
- 
-#     form.fields['titol'].widget.attrs['placeholder']="Titol"
-#     form.fields['grup'].widget.attrs['placeholder']="Grup"
-#     form.fields['anny'].widget.attrs['placeholder']="Any"
-#     form.fields['descripcio'].widget.attrs['placeholder']="Descripció"
-#     form.fields['preu'].widget.attrs['placeholder']="Preu"
-    
-#     return render (request, 'discos/editar_disc.html', {'form': form} )  

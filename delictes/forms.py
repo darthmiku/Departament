@@ -14,6 +14,6 @@ class DenunciaForm (forms.Form):
                
                         )
     districte=forms.CharField(label="districte",max_length=200,widget=forms.Select(choices=DISTRICTE_CHOICES),)
-    
+    supervillano=forms.CharField(label='supervillano',max_length=200)
     observacions= forms.CharField(label="observacions",widget=forms.Textarea)
    
