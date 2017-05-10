@@ -8,7 +8,19 @@ body{
   background-repeat: no-repeat;
 }
 
+.form-horizontal {
+    width: 30%;
+    margin: 250px auto;
+}
 
-.login-img3-body {
-    background:transparent;
-}    
+#boto{
+  background-color:black;
+  border:black;
+}
+
+.btn-primary:hover{
+  color:black !important;
+  background-color:white !important;
+  font-size: 250%;
+  font-family: bold 'Lato', sans-serif !important;
+}

@@ -48,7 +48,7 @@ def registrarse(request):
         form = nou_usuari_form()
     
         for f in form.fields:
-           form.fields[f].widget.attrs['class'] = 'input-group'
+           form.fields[f].widget.attrs['class'] = 'form-control'
         
         form.fields['username'].widget.attrs['placeholder']="Username"   
         form.fields['email'].widget.attrs['placeholder']="Email"
@@ -83,12 +83,7 @@ def login(request):
     else:
         form=LoginForm()
         ctx={ 'form':form, }
-    # form.fields['username'].widget.attrs['placeholder']="Username"
-    # form.fields['password'].widget.attrs['placeholder']="Contrasenya"
-    # form.fields['username'].widget.attrs['required']="required"
-    # form.fields['password'].widget.attrs['required']="required"/
-    
-    return render(request, 'login.html', {} )
+        return render(request, 'login.html', {} )
 
 #DESLOGUEJAR-SE: me voy! ---    
 def logout(request):

@@ -13,7 +13,7 @@
       <form class="login-form" action='' method='POST'>
          {%csrf_token%}        
         <div class="login-wrap">
-           
+           <!--tots els inputs necessaris -->
             <div class="input-group">
               <span class="input-group-addon"><i class="icon_profile"></i></span>
               <input type="text" class="form-control" placeholder="Username" autofocus required="required">
@@ -28,10 +28,10 @@
                 <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
             </label>
             <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-            
+          <!--se acabaron los inputs --> 
         </div>
       </form>
-        <a href='{% url "usuaris:registrarse" %}' class="btn btn-success btn-lg btn-block">registre</a>
+      <a href='{% url "usuaris:registrarse" %}' class="btn btn-success btn-lg btn-block">registre</a>
     </div>
   </div>    
 {% endblock %}

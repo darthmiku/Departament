@@ -6,37 +6,49 @@
       {% endblock %}
 
   {% block content %}
-  <div class="login-img3-body">
-    <div class="container">
-      
-      <!--formulari-->
-      <form class="login-form" action='' method='POST'>
-         {%csrf_token%}        
-        <div class="login-wrap">
-           {% for field in form.visible_fields %}
-             {% csrf_token %}
-              <div class="input-group">
-                 {{ field }}    
+      <!--contenidor formulari-->
+      <div class="row">
+        <div class="col-lg-12">
+            <div class="panel-body">
+              <div class="form">
+                  <!--formulari formulari-->
+                  <form class="form-horizontal" id="feedback_form" method="post" action="">
+                      {% csrf_token %}
+                      
+                      <div class="login-wrap">
+                          {% for field in form.visible_fields %}
+                          <div class="form-group">
+                              {{field.label}}
+                               <span class="input-group-addon"></span></span> 
+                                {{field}}
+                             <!--si existeixen missatges errors-->
+                            {% if field.help_text %}
+                  	        {% endif %}
+                  		        {% if field.errors %}		        	
+              			        <div class="alert alert-danger">
+                  			        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  				       <ul>
+                  				          {% for error in field.errors%}
+                  				          <li>{{ error }}</li>
+                  			              {% endfor %}
+                  			          </ul>
+              		         	</div>
+                  		        {% endif %}
+                  		    </div>    
+                  		    {% endfor %}       
+                          <div class="form-group">
+                              <div class="col-lg-offset-2 col-lg-10">
+                                  <button id="boto" class="btn btn-primary" type="submit">YOU !!!</button>
+                                  <button class="btn btn-default" type="button">Cancel</button>
+                              </div>
+                         </div>
+                      </div>
+                  </form>
+                  <!--se acabó er formulari-->
               </div>
-                <!--si existeixen missatges errors-->
-                {% if field.help_text %}
-      	        {% endif %}
-      		        {% if field.errors %}		        	
-      			        <div class="alert alert-danger">
-          			        <button type="button" class="close" data-dismiss="alert">&times;</button>
-          				       <ul>
-          				          {% for error in field.errors%}
-          				          <li>{{ error }}</li>
-          			              {% endfor %}
-          			          </ul>
-      		         	</div>
-      		        {% endif %}
-      		 {% endfor %}       
-      	   </div>        
-           <button class="btn btn-primary btn-lg btn-block" type="submit">YOU !!!</button>
-      </form>
+         </div>
+      </div> 
      </div>
-  </div>    
 {% endblock %}
      
  

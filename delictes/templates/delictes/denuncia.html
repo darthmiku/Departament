@@ -12,7 +12,7 @@
         <header class="header dark-bg">
           <!--LOGO start-->
               <!--<a href="index.html" class="logo">Nice <span class="lite">Admin</span></a>-->
-             <a href="{% url 'delictes:crear_denuncia' %}" class="logo">Gotham <span class="lite"> Police Departament</span></a>
+             <a href="{% url 'delictes:denuncia' %}" class="logo">Gotham <span class="lite"> Police Departament</span></a>
            <!--logo end-->
             <div class="top-nav notification-row">                
                 <!-- notificatoin dropdown start-->
@@ -54,16 +54,20 @@
           </header>
 
           <!--FORMULARI i SUS COSAS-->
+          <!--no t'equivoquis que primer vé el contenidor-->
            <div id="main-content">
               <div class="wrapper">
  				<h3 class="page-header"><i class="fa fa-file-text-o"></i> Crear denuncia</h3>
-                    <form class="login-form" action="" method='post'>        
+ 				    <!--te presento mi amigo formulari-->
+                    <form class="form-horizontal" action="" method='post'>        
                      {% csrf_token %}
+                     
                         {% for field in form.visible_fields %}
                             <div class="form-group">
                             {{ field.label_tag }}
                                {{ field }}
                             </div>
+                                <!--si hi han errors que me lus ensenye-->
                                 {% if field.errors %}
                                 <div class="alert alert-danger">
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -74,10 +78,11 @@
                                 </ul>
                                 </div>
                                 {% endif %}
+                            <!--otro input pà pintar-->    
                             {% endfor %}
-                          </form>
-                   
-                    <button class="btn btn-info btn-lg btn-block" type="submit">Enviar per lluitar contra el crim</button>
+                            <button class="btn btn-info btn-lg btn-block" type="submit">Enviar per lluitar contra el crim</button>
+                            <!--aquí s'acaba el formulari-->
+                        </form>
                 </div>
             </div>    
  
@@ -104,8 +109,6 @@
     <!--custom tagsinput-->
     <script src="{% static "js/jquery.tagsinput.js" %}"></script>
     
-    <!-- colorpicker -->
-   
     <!-- bootstrap-wysiwyg -->
     <script src="{% static "js/jquery.hotkeys.js" %}"></script>
     <script src="{% static "js/bootstrap-wysiwyg.js" %}"></script>

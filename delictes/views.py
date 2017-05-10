@@ -32,9 +32,8 @@ def denuncia(request):
         form= DenunciaForm()
         
         for f in form.fields:
-            form.fields[f].widget.attrs['class'] = 'formulari'
+            form.fields[f].widget.attrs['class'] = 'form-control'
      
-            form.fields['observacions'].widget.attrs['class']="form-control"
         return render (request, 'delictes/denuncia.html', {'form': form} )    
 
    
