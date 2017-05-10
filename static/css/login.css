@@ -1,0 +1,36 @@
+body{
+  background: url('../img/bg.jpg'); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.input-group {
+    display: table;
+    border-collapse: separate;
+     
+}
+
+.btn {
+    margin:auto;
+    border-radius: 0px;
+}
+
+.btn-success {
+    display: block;
+    width: 27%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.btn-block + .btn-block {
+    margin-top: 10px;
+}
+
+.boto{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}

@@ -12,7 +12,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
  
 # Create your views here.
-def crear_denuncia(request):
+def denuncia(request):
     # usuari=Perfil.objects.get(id=usuari_id)
     if request.method == 'POST':
         form = DenunciaForm(request.POST)
@@ -27,14 +27,14 @@ def crear_denuncia(request):
                                     observacions=observacions,
                                        )   
         messages.info(request,"denúncia creada correctament")
-        return redirect("delictes:crear_denuncia")    
+        return redirect("delictes:denuncia")    
     else:
         form= DenunciaForm()
         
-    for f in form.fields:
-        form.fields[f].widget.attrs['class'] = 'formulari'
- 
-        form.fields['observacions'].widget.attrs['class']="form-control"
-    return render (request, 'delictes/crear_denuncia.html', {'form': form} )    
+        for f in form.fields:
+            form.fields[f].widget.attrs['class'] = 'formulari'
+     
+            form.fields['observacions'].widget.attrs['class']="form-control"
+        return render (request, 'delictes/denuncia.html', {'form': form} )    
 
    

@@ -6,20 +6,18 @@
   {% endblock %}
   
   {% block content %}
-    <!-- container section start -->
-      <section id="container" class="">
-        <!--header START-->   
+    <!-- CONTAINER PÀ TOÓ -->
+      <section id='container'>
+        <!--HEADER AMB SUS COSES-->   
         <header class="header dark-bg">
-          <!--logo start-->
-             <!--<a href="index.html" class="logo">Nice <span class="lite">Admin</span></a>-->
-             <a href="{% url 'delictes:crear_denuncia' %}" class="logo">GD<span class="lite">P</span></a>
+          <!--LOGO start-->
+              <!--<a href="index.html" class="logo">Nice <span class="lite">Admin</span></a>-->
+             <a href="{% url 'delictes:crear_denuncia' %}" class="logo">Gotham <span class="lite"> Police Departament</span></a>
            <!--logo end-->
-       
-            <!-- user login dropdown end -->
             <div class="top-nav notification-row">                
                 <!-- notificatoin dropdown start-->
                 <ul class="nav pull-right top-menu">
-                <!-- user login dropdown start-->
+                <!-- MENÚ DEL PERFIL DE L'USUARI-->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
@@ -48,56 +46,42 @@
                             <li>
                                 <a href="#"><i class="icon_key_alt"></i> Documentation</a>
                             </li>
-                            <li>
-                                <a href="#"><i class="icon_key_alt"></i> Documentation</a>
-                            </li>
                         </ul>
                     </li>
-                    <!-- user login dropdown end -->
+                    <!-- ASÍ SE ACABA EL MENÚ DE L'USUARI -->
                 </ul>
-                    <!-- notificatoin dropdown end-->
-                </div>  
+            </div>  
           </header>
-          <!--main content start-->
-        <div id="escut" class='main-content'> 
-          <section class="wrapper">
-		    <div class="row">
-                  <div id="denuncia">
-                      <section class="panel">
-                          <header class="panel-heading">
-                             Nova Denuncia
-                          </header>
-                          <div class="panel-body">
-                              <!--formulari -->
-                              <form class="form-horizontal" method="post" action="">
-                                {% csrf_token %}
-                                    {% for field in form.visible_fields %}
-                                    <div class="form-group">
-                                    {{ field.label_tag }}
-                                       {{ field }}
-                                    </div>
-                                        {% if field.errors %}
-                                        <div class="alert alert-danger">
-                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                        <ul>
-                                            {% for error in field.errors%}
-                                                <li>{{ error }}</li>
-                                            {% endfor %}
-                                        </ul>
-                                        </div>
-                                        {% endif %}
+
+          <!--FORMULARI i SUS COSAS-->
+           <div id="main-content">
+              <div class="wrapper">
+ 				<h3 class="page-header"><i class="fa fa-file-text-o"></i> Crear denuncia</h3>
+                    <form class="login-form" action="" method='post'>        
+                     {% csrf_token %}
+                        {% for field in form.visible_fields %}
+                            <div class="form-group">
+                            {{ field.label_tag }}
+                               {{ field }}
+                            </div>
+                                {% if field.errors %}
+                                <div class="alert alert-danger">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <ul>
+                                    {% for error in field.errors%}
+                                        <li>{{ error }}</li>
                                     {% endfor %}
-                                  </form>
-                                  <button type="submit" class="btn btn-primary">Submit</button>
-                           </div>
-    
-                        </section>
-                    </div>
+                                </ul>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                          </form>
+                   
+                    <button class="btn btn-info btn-lg btn-block" type="submit">Enviar per lluitar contra el crim</button>
                 </div>
-              <!-- page end-->
-          </section>
-        </div>
-      <!--main content end-->
+            </div>    
+ 
+       <!--main content end-->
   
    {% endblock %}  
      
@@ -126,9 +110,7 @@
     <script src="{% static "js/jquery.hotkeys.js" %}"></script>
     <script src="{% static "js/bootstrap-wysiwyg.js" %}"></script>
     <script src="{% static "js/bootstrap-wysiwyg-custom.js" %}"></script>
-    <!-- ck editor -->
-    <script type="text/javascript" src="{% static "assets/ckeditor/ckeditor.js" %}"></script>
-    <!-- custom form component script for this page-->
+      <!-- custom form component script for this page-->
     <script src="{% static "js/form-component.js" %}"></script>
     <!-- custome script for all page -->
     <script src="{% static "js/scripts.js" %}"></script>

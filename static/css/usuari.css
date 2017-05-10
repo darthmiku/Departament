@@ -1,0 +1,14 @@
+body{
+  background: url('../img/batman1.png'); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: auto;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+
+.login-img3-body {
+    background:transparent;
+}    

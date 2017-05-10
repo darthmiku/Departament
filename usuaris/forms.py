@@ -15,10 +15,16 @@ class LoginForm(forms.Form):
                              widget=forms.PasswordInput(),
                             )
                             
+#CREAR NOU USUARI                            
 class nou_usuari_form(forms.Form):
+    username=forms.CharField(label="Nom usuari",
+                             max_length=200,
+                             help_text="Nom d'usuari.")
+                             
     email=forms.EmailField(label="Correu",
                              max_length=200,
-                             help_text="Correu .")
+                             help_text="Correu .")                  
+                          
     password=forms.CharField(label="Paraula de pas",
                              max_length=24,
                              help_text="Paraula de pas per accedir a sistema.",

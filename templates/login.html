@@ -2,32 +2,36 @@
   {% block title %} Login {% endblock %}
   {% block extra-head %}
     {% load static %}
-      <link href="{% static "css/denuncia.css" %}" rel="stylesheet">  
+      <link href="{% static "css/login.css" %}" rel="stylesheet">  
   {% endblock %}
   
   {% block content %}
   <div class="login-img3-body">
     <div class="container">
+      
       <!--formulari-->
       <form class="login-form" action='' method='POST'>
          {%csrf_token%}        
         <div class="login-wrap">
-            <p class="login-img"></p>
+           
             <div class="input-group">
               <span class="input-group-addon"><i class="icon_profile"></i></span>
-              <input type="text" class="form-control" placeholder="Username" autofocus>
+              <input type="text" class="form-control" placeholder="Username" autofocus required="required">
+              {{user.username}}
             </div>
             <div class="input-group">
                 <span class="input-group-addon"><i class="icon_key_alt"></i></span>
-                <input type="password" class="form-control" placeholder="Password">
+                <input type="password" class="form-control" placeholder="Password" required="required">
+                {{user.password}}
             </div>
             <label class="checkbox">
                 <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
             </label>
             <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-            <button class="btn btn-info btn-lg btn-block" type="submit">Signup</button>
+            
         </div>
       </form>
+        <a href='{% url "usuaris:registrarse" %}' class="btn btn-success btn-lg btn-block">registre</a>
     </div>
   </div>    
 {% endblock %}
