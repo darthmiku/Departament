@@ -14,17 +14,25 @@
          {%csrf_token%}        
         <div class="login-wrap">
            <!--tots els inputs necessaris -->
-            <div class="input-group">
-              <span class="input-group-addon"><i class="icon_profile"></i></span>
-              <input type="text" class="form-control" placeholder="Username" autofocus required="required">
-              {{user.username}}
-            </div>
-            <div class="input-group">
-                <span class="input-group-addon"><i class="icon_key_alt"></i></span>
-                <input type="password" class="form-control" placeholder="Password" required="required">
-                {{user.password}}
-            </div>
-            <label class="checkbox">
+            {% for field in form.visible_fields %}
+              <div class="form-group">
+                <span class="input-group-addon"></span>
+                  {{field}}
+                      <!--si existeixen missatges errors-->
+                      {% if field.help_text %}
+        	            {% endif %}
+        		        {% if field.errors %}		        	
+        			        <div class="alert alert-danger">
+        			        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        				        <ul>
+        				          {% for error in field.errors%}
+        				          <li>{{ error }}</li>
+        			              {% endfor %}
+        			            </ul>
+        		         	</div>
+        		        {% endif %}
+        	        </div>        
+                 {% endfor %}
                 <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
             </label>
             <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
@@ -35,4 +43,3 @@
     </div>
   </div>    
 {% endblock %}
-

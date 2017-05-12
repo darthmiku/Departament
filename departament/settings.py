@@ -55,6 +55,8 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 ROOT_URLCONF = 'departament.urls'
 
 TEMPLATES = [
@@ -128,7 +130,6 @@ STATICFILES_DIRS = [ os.path.join(BASE_DIR, "static"),
                     
                     ]
 
-
-
 #API KEY DEL GOOGLE_MAPS
 GEOPOSITION_GOOGLE_MAPS_API_KEY = 'AIzaSyBc9I7-cZOh3dYdxmOvRJFFbZ3CHdApbHg'
+

@@ -9,7 +9,7 @@ from django.db.models.signals import post_save
 #Crearem el PERFIL de l'usuari: OneToOne amb USER de DJANGO que pa eso està
 class Perfil(models.Model):
     # 1 to 1 - model User
-    usuari = models.OneToOneField(User,related_name='Perfil')
+    usuari = models.OneToOneField(User,related_name='perfil')
 
     def es_policia(self):
          return hasattr(self,'policia')

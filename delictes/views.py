@@ -12,28 +12,30 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
  
 # Create your views here.
+@login_required
 def denuncia(request):
-    # usuari=Perfil.objects.get(id=usuari_id)
+    
     if request.method == 'POST':
         form = DenunciaForm(request.POST)
+        
         if form.is_valid():
-           districte= form.cleaned_data['districte']
-           supervillano = form.cleaned_data['supervillano']
-           observacions=form.cleaned_data['observacions']
-
-        #creem l'objecte DENUNCIA amb les dades rebudes
-        Denuncia.objects.create(    districte=districte,
-                                    supervillano=supervillano,
-                                    observacions=observacions,
+            districte= form.cleaned_data['districte']
+            supervillano = form.cleaned_data['supervillano']
+            observacions=form.cleaned_data['observacions']
+            
+            #creem l'objecte DENUNCIA amb les dades rebu   des
+            Denuncia.objects.create(    districte=districte,
+                                        supervillano=supervillano,
+                                        observacions=observacions,
                                        )   
-        messages.info(request,"denúncia creada correctament")
-        return redirect("delictes:denuncia")    
+            messages.info(request,"denúncia creada correctament")
+            return redirect("delictes:denuncia")    
     else:
         form= DenunciaForm()
         
-        for f in form.fields:
-            form.fields[f].widget.attrs['class'] = 'form-control'
-     
-        return render (request, 'delictes/denuncia.html', {'form': form} )    
+    for f in form.fields:
+        form.fields[f].widget.attrs['class'] = 'form-control'
+ 
+    return render (request, 'delictes/denuncia.html', {'form': form} )    
 
    

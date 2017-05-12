@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render, get_object_or_404, redirect, render_to_response
-from .forms import LoginForm 
+from .forms import LoginForm
+from django.template import RequestContext
 from django.core.urlresolvers import reverse
 from django.forms import modelform_factory
 from .models import Perfil,Ciutada
@@ -34,30 +35,32 @@ def registrarse(request):
             if repetit:
                 messages.error( request, "Aquest nom d'usuari ja existeix a la base de dades")
             else:
-                #ens quedem amb l'email i el password
+                # ens quedem amb l'email i el password
                 email= form.cleaned_data['email']
                 password = form.cleaned_data['password']
                 #creem el nou usuari
                 nou_usuari = User.objects.create_user( username = username, email = email, password = password )
+                nou_usuari.save()
                 #i creem el nou usuari
                 ciutada=Ciutada.objects.create(perfil=nou_usuari.perfil)
-                
+                ciutada.save()
+            
                 messages.info(request,"Usuari creat correctament")
                 return redirect('usuaris:login')
     else:
         form = nou_usuari_form()
     
-        for f in form.fields:
-           form.fields[f].widget.attrs['class'] = 'form-control'
-        
-        form.fields['username'].widget.attrs['placeholder']="Username"   
-        form.fields['email'].widget.attrs['placeholder']="Email"
-        form.fields['password'].widget.attrs['placeholder']="Contrasenya"
-        form.fields['username'].widget.attrs['required']="required" 
-        form.fields['email'].widget.attrs['required']="required"
-        form.fields['password'].widget.attrs['required']="required"
-        
-        return render(request, 'registrarse.html', {'form': form,} )
+    for f in form.fields:
+       form.fields[f].widget.attrs['class'] = 'form-control'
+    
+    form.fields['username'].widget.attrs['placeholder']="Username"   
+    form.fields['email'].widget.attrs['placeholder']="Email"
+    form.fields['password'].widget.attrs['placeholder']="Contrasenya"
+    form.fields['username'].widget.attrs['required']="required" 
+    form.fields['email'].widget.attrs['required']="required"
+    form.fields['password'].widget.attrs['required']="required"
+    
+    return render(request, 'registrarse.html', {'form': form,})
 
 #LOGEJAR-SE ------
 def login(request):
@@ -65,11 +68,11 @@ def login(request):
     #si tot es POST:
     if request.method=='POST':
         form=LoginForm( request.POST )
-
+        #si el formulari és vàlid
         if form.is_valid():
-            user=authenticate( username = form.cleaned_data['username'],
-                              password = form.cleaned_data['password'])
-               
+            user=authenticate(  username = form.cleaned_data['username'],
+                                password = form.cleaned_data['password'])
+            #si existeix l'usuari i està actiu   
             if user and user.is_active:
                 #si tot és ok:
                 authLogin( request, user )
@@ -82,8 +85,19 @@ def login(request):
                 
     else:
         form=LoginForm()
-        ctx={ 'form':form, }
-        return render(request, 'login.html', {} )
+    
+    ctx={ 'form':form, }
+    
+    for f in form.fields:
+      form.fields[f].widget.attrs['class'] = 'form-control'    
+
+    form.fields['username'].widget.attrs['placeholder']="Username"
+    form.fields['password'].widget.attrs['placeholder']="Contrasenya"
+    form.fields['username'].widget.attrs['required']="required"
+    form.fields['password'].widget.attrs['required']="required"
+    
+    return render(request,'login.html',ctx )
+
 
 #DESLOGUEJAR-SE: me voy! ---    
 def logout(request):
