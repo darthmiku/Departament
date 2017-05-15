@@ -83,6 +83,7 @@ def login(request):
             else:
                 messages.error(request,"Usuari o password incorrecte o usuari no actiu")
                 
+                
     else:
         form=LoginForm()
     

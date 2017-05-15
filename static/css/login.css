@@ -39,12 +39,12 @@ body{
     margin: 42% auto auto;
 }
 
-#id_username{
-  background-image: url('../img/icons/tarjeta.png');
-  background-size: auto;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin:auto;
-}
+/*#id_username{*/
+/*  background-image: url('../img/icons/tarjeta.png');*/
+/*  background-size: auto;*/
+/*  background-position: center;*/
+/*  background-repeat: no-repeat;*/
+/*  margin:auto;*/
+/*}*/
 
-#id_password{}
+/*#id_password{}*/

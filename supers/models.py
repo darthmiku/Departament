@@ -26,11 +26,18 @@ class Supervillano(Super):
     aparensa=models.CharField(max_length=200,verbose_name='Aparença')
     graumaldat=models.CharField(verbose_name="Grau de Maldat",max_length=50)
     
+    #per retornar el nom
+    def __str__(self):
+        return self.nom
+    
 
 #subclasse SUPERHEROI
 class Superheroi(Super):
     heroi_id=models.IntegerField(primary_key=True)
     disponibilitat=models.DateTimeField()
     perfil = models.OneToOneField(Perfil,default="")
-    
+
+    #per retornar el nom
+    def __str__(self):
+        return self.nom    
 
