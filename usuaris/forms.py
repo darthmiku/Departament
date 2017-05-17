@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django import forms
 from django.conf import settings
 from .models import Perfil
@@ -25,6 +26,17 @@ class nou_usuari_form(forms.Form):
                              max_length=200,
                              help_text="Correu .")                  
                           
+    password=forms.CharField(label="Paraula de pas",
+                             max_length=24,
+                             help_text="Paraula de pas per accedir a sistema.",
+                             widget=forms.PasswordInput(),
+                            )
+
+#CREAR NOU POLÍCIA
+class PoliciaForm(forms.Form):
+    username=forms.CharField(label="Nom usuari",
+                             max_length=200,
+                             help_text="Nom d'usuari.")
     password=forms.CharField(label="Paraula de pas",
                              max_length=24,
                              help_text="Paraula de pas per accedir a sistema.",

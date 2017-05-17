@@ -11,12 +11,13 @@ class Perfil(models.Model):
     # 1 to 1 - model User
     usuari = models.OneToOneField(User,related_name='perfil')
 
+    @property
     def es_policia(self):
          return hasattr(self,'policia')
-
+    @property
     def es_ciutada(self):
         return hasattr(self, 'ciutada')
-    
+    @property
     def es_superheroi(self):
         return hasattr(self,'superheroi')
 
@@ -24,20 +25,22 @@ class Perfil(models.Model):
 @python_2_unicode_compatible
 class Ciutada(models.Model):
     perfil = models.OneToOneField(Perfil)
-    
+
     def __str__(self):
-        return "Id: %s usuari: %s"%(self.id, self.perfil.user.username)
+       return self.perfil.usuari
+    
+
 
 class Policia(models.Model):
     num_placa=models.CharField(max_length=5)
+    es_superpolicia=models.BooleanField(default=False)
     perfil= models.OneToOneField(Perfil)
 
+    
 
+#per salvar el perfil
 def post_save_user(sender, instance, created, **kwargs):
     if created:
-        nou_perfil = Perfil.objects.create(
-                    usuari=instance,
-                    )
+        nou_perfil = Perfil.objects.create( usuari=instance,)
         instance.refresh_from_db()
-
 post_save.connect(post_save_user, sender=User)

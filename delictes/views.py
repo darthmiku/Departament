@@ -10,10 +10,12 @@ from django.db.models import Q
 from .forms import DenunciaForm
 from django.forms import modelform_factory
 from django.contrib import messages
+from django.utils.encoding import python_2_unicode_compatible
 from django.contrib.auth.decorators import login_required
 
 
 #formulari per crear denuncia -->
+@login_required
 def denuncia(request):
    
     if request.method == 'POST':
@@ -36,15 +38,14 @@ def denuncia(request):
     else:
         form=DenunciaForm()
  
-   
-
     for d in form.fields:
         form.fields[d].widget.attrs['class'] = 'form-control'
  
     return render (request, 'delictes/denuncia.html', {'form': form})    
 
 
-   
+
+
 
     
   

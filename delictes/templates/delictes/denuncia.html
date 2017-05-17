@@ -2,8 +2,9 @@
       {% block title %} Crear Denuncia {% endblock %}
   {% block extra-head %}
     {% load static %}
-      <link href="{% static "css/denuncia.css" %}" rel="stylesheet">  
-  {% endblock %}
+      <link href="{% static "css/denuncia.css" %}" rel="stylesheet">
+      <link href="{% static "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" %}" rel="stylesheet" />
+   {% endblock %}
   
   {% block content %}
     <!-- CONTAINER PÀ TOÓ -->
@@ -20,16 +21,17 @@
                 <!-- MENÚ DEL PERFIL DE L'USUARI-->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="username">Benvingut ciutada</span>
                             <span class="profile-ava">
                                 <img alt="" src="../../static/img/user.png">
                             </span>
-                            <span class="username">ciutada</span>
+                             <span class="username1">{{user.username}}</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
                             <li class="eborder-top">
-                                <a href="#"><i class="icon_profile"></i> My Profile</a>
+                                <a href=""><i class="icon_profile"></i> Canviar contrasenya </a>
                             </li>
                             <li>
                                 <a href="{%url 'usuaris:logout' %}"><i class="icon_key_alt"></i> Log Out</a>
@@ -104,5 +106,12 @@
     <script src="{% static "js/form-component.js" %}"></script>
     <!-- custome script for all page -->
     <script src="{% static "js/scripts.js" %}"></script>
+    <!--select2-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js" ></script>      
+    <script type="text/javascript">
+        $(document).ready(function() {
+              $("select").select2();
+        });
+    </script>
     
   {% endblock %}

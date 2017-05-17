@@ -5,17 +5,6 @@ from usuaris.models import Perfil
 from supers.models import Superheroi
 
 
-# #----> cap a la migracio
-# DISTRICTE_CHOICES = (      
-#                             ( 'D1-NORD GOTHAM', 'D1-Nord Gotham'),
-#                             ( 'D2-GOTHAM CENTRE', 'D2-Gotham Centre'),
-#                             ( 'D3-ARKHAM CITY', 'D3-Arkham City'),
-#                             ( 'D4-GOTHAM EAST', 'D4-Gotham East '),
-#                             ( 'D5-GOTHAM SUD', 'D5-Gotham Sud'),
-#                             ( 'D6-BRONX GOTHAM', 'D6-Bronx GOTHAM')
-                   
-#                         )
-
 class Districte(models.Model):
     nom=models.CharField(max_length=200)
     
