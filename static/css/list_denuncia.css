@@ -1,0 +1,40 @@
+
+
+.primer{
+    display:flex;
+    flex-direction:row;
+    background-color:#394a59;
+    color:white !important;
+
+}
+
+.segon{
+    padding:8px;
+}
+
+.denuncia{
+    margin-top:10px;
+    background-color: #eeeeee;
+}
+
+.subtitol{
+    color:grey;
+}
+
+@media screen and (min-width: 480px) {
+    #container-denuncies{
+       background-color:white !important;
+       padding:15px !important;
+       width:75%;
+       margin:auto;
+    }
+}
+
+@media screen and (max-width: 481px) {
+    #container-denuncies{
+       background-color:white !important;
+       padding:15px !important;
+       width:100%;
+       margin:auto;
+    }
+}

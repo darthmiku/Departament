@@ -9,6 +9,7 @@ urlpatterns = [
   url(r'^logout/$', views.logout, name='logout'),
   url(r'^registrarse/$',views.registrar_ciutada,name='registrar_ciutada'),
   url(r'^dashboard/$', views.dashboard, name="dashboard"),
+  url(r'^superdashboard/$', views.superdashboard, name="superdashboard"),
    
 ]
 

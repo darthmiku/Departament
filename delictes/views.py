@@ -14,6 +14,7 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.contrib.auth.decorators import login_required
 
 
+
 #formulari per crear denuncia -->
 @login_required
 def denuncia(request):
@@ -44,6 +45,11 @@ def denuncia(request):
     return render (request, 'delictes/denuncia.html', {'form': form})    
 
 
+
+def list_denuncies(request):
+    llista_denuncies=Denuncia.objects.all()
+    ctx={'llista_denuncies':llista_denuncies}        
+    return render(request, 'delictes/list_denuncies.html',ctx)
 
 
 

@@ -18,11 +18,6 @@ from django.contrib.auth import ( login as authLogin,
 from django.contrib import messages
 
 
-def dashboard(request):
-    llista_denuncies=Denuncia.objects.all();
- 
-    ctx={'llista_denuncies':llista_denuncies}        
-    return render(request, 'dashboard.html',ctx)
 
 #CREAR USUARI -------
 def registrar_ciutada(request):
@@ -64,6 +59,18 @@ def registrar_ciutada(request):
     form.fields['password'].widget.attrs['required']="required"
     
     return render(request, 'registrarse.html', {'form': form,})
+
+@login_required
+def dashboard(request):
+          
+    return render(request, 'dashboard.html')
+   
+@login_required   
+def superdashboard(request):
+          
+    return render(request, 'dashboard.html')
+
+
 
 
 #afegir policies a la BBDD
@@ -115,7 +122,14 @@ def login(request):
             user=authenticate(  username = form.cleaned_data['username'],
                                 password = form.cleaned_data['password'])
                                 
-            if user.perfil.es_ciutada: 
+            if user.perfil.policia.es_superpolicia and user.is_active:
+                    #si tot és ok:
+                    authLogin( request, user )
+                    next = request.GET.get('next')
+                    messages.info(request,"Benvingut")
+                    return redirect(next or 'usuaris:superdashboard')                     
+            
+            elif user.perfil.es_ciutada: 
                 if user.is_active:
                     #si tot és ok:
                     authLogin( request, user )
@@ -130,6 +144,13 @@ def login(request):
                     messages.info(request,"Benvingut")
                     return redirect(next or 'usuaris:dashboard')
                     
+            # elif user.perfi.es_superpolicia and user.is_active:
+            #         #si tot és ok:
+            #         authLogin( request, user )
+            #         next = request.GET.get('next')
+            #         messages.info(request,"Benvingut")
+            #         return redirect(next or 'usuaris:superdashboard')
+
             # elif user.perfil.es_superheroi:
             #     if user.is_active:
             #         #si tot és ok:
